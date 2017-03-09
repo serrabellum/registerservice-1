@@ -14,13 +14,22 @@ public class Employee {
 	private String FirstName;
 	private String LastName;
 	private String EmployeeId;
+	private String password;
 	
 	public UUID getId() {
 		return this.id;
 	}
+	public void setEmployeeUUID(UUID in)
+	{
+		id = in;
+	}
 	public String getEmployeeId()
 	{
 		return this.EmployeeId;
+	}
+	public String getPassword()
+	{
+		return this.password;
 	}
 	public String getFirst()
 	{
@@ -62,7 +71,13 @@ public class Employee {
 	public Employee(EmployeeEntity employeeEntity){
 		
 	}
-	
+	public Employee(String employeeId, String password, String first, String last)
+	{
+		this.EmployeeId = employeeId;
+		this.password = password;
+		this.FirstName = first;
+		this.LastName = last;
+	}
 	public Employee(){
 		
 	}

@@ -3,12 +3,11 @@ package edu.uark.commands.employees;
 import java.util.UUID;
 
 import edu.uark.commands.ResultCommandInterface;
-import edu.uark.commands.employees.EmployeeLoginQuery;
 import edu.uark.models.api.Employee;
 import edu.uark.models.repositories.EmployeeRepository;
 import edu.uark.models.repositories.interfaces.EmployeeRepositoryInterface;
 
-public class EmployeeQuery implements ResultCommandInterface<Employee>{
+public class EmployeeQuery implements ResultCommandInterface<Employee> {
 	@Override
 	public Employee execute() {
 		return new Employee(
@@ -30,7 +29,7 @@ public class EmployeeQuery implements ResultCommandInterface<Employee>{
 	public EmployeeRepositoryInterface getProductRepository() {
 		return this.employeeRepository;
 	}
-	public EmployeeQuery setEmployeeRepository(EmployeeRepositoryInterface employeeRepository) {
+	public EmployeeQuery setProductRepository(EmployeeRepositoryInterface employeeRepository) {
 		this.employeeRepository = employeeRepository;
 		return this;
 	}

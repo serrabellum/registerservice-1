@@ -28,7 +28,9 @@ public class ProductRestController {
 
 	@RequestMapping(value = "/apiv0/byLookupCode/{productLookupCode}", method = RequestMethod.GET)
 	public Product getProductByLookupCode(@PathVariable String productLookupCode) {
-		return (new ProductByLookupCodeQuery()).setLookupCode(productLookupCode).execute();
+		return (new ProductByLookupCodeQuery()).
+			setLookupCode(productLookupCode).
+			execute();
 	}
 
 	@RequestMapping(value = "/apiv0/products", method = RequestMethod.GET)
@@ -38,7 +40,9 @@ public class ProductRestController {
 	
 	@RequestMapping(value = "/apiv0/", method = RequestMethod.PUT)
 	public Product putProduct(@RequestBody Product product) {
-		return (new ProductSaveCommand()).setApiProduct(product).execute();
+		return (new ProductSaveCommand()).
+			setApiProduct(product).
+			execute();
 	}
 
 	@ResponseBody

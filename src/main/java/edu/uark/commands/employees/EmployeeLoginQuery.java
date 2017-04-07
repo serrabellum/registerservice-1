@@ -15,14 +15,14 @@ public class EmployeeLoginQuery implements ResultCommandInterface<Employee>{
 	public Employee execute()
 	{
 		if (StringUtils.isBlank(this.getEmployeeId())) {
-			return new Employee().setApiRequestStatus(EmployeeApiRequestStatus.INVALID);
+			return new Employee().setApiRequestStatus(EmployeeApiRequestStatus.INVALID_INPUT);
 		}
 		
 		EmployeeEntity employeeEntity = this.employeeRepository.byEmployeeId(this.getEmployeeId());
 		if (employeeEntity != null) {
 			return new Employee(employeeEntity);
 		} else {
-			return new Employee().setApiRequestStatus(EmployeeApiRequestStatus.EMPLOYEE_NOT_FOUND);
+			return new Employee().setApiRequestStatus(EmployeeApiRequestStatus.NOT_FOUND);
 		}
 	}
 	

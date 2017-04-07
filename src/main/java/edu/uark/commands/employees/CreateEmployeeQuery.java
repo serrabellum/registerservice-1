@@ -17,17 +17,17 @@ public class CreateEmployeeQuery  implements ResultCommandInterface<Employee>{
 	public Employee execute() {
 		if(StringUtils.isBlank(this.newEmployee.getEmployeeId()))
 		{
-			return (new Employee()).setApiRequestStatus(EmployeeApiRequestStatus.INVALID);
+			return (new Employee()).setApiRequestStatus(EmployeeApiRequestStatus.INVALID_INPUT);
 		}
 		EmployeeEntity employeeEntity = this.employeeRepository.get(this.newEmployee.getId());
 		if(employeeEntity != null)
 		{
-			return (new Employee()).setApiRequestStatus(EmployeeApiRequestStatus.EMPLOYEE_ALREADY_EXISTS);
+			return (new Employee()).setApiRequestStatus(EmployeeApiRequestStatus.EMPLOYEE_ID_ALREADY_EXISTS);
 		}
 		employeeEntity = new EmployeeEntity(this.newEmployee);
 		employeeEntity.save();
 		if ((new UUID(0, 0)).equals(this.newEmployee.getId())) {
-			this.newEmployee.setEmployeeUUID(employeeEntity.getId());
+			this.newEmployee.setId(employeeEntity.getId());
 		}
 		return this.newEmployee;
 	}

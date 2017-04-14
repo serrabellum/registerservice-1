@@ -1,5 +1,8 @@
 package edu.uark.models.repositories;
 
+import java.util.Collection;
+import java.util.LinkedList;
+
 import edu.uark.dataaccess.repository.BaseRepository;
 import edu.uark.dataaccess.repository.DatabaseTable;
 import edu.uark.models.entities.TransactionEntity;
@@ -20,6 +23,11 @@ public class TransactionRepository extends BaseRepository<TransactionEntity> imp
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+	protected void insert(TransactionEntity entity)
+	{
+	}
+	protected void insert(Collection<TransactionEntity> entityCollection)
+	{
+	}
 	
 }

@@ -19,6 +19,7 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 	protected void fillFromRecord(ResultSet rs) throws SQLException {
 		this.lookupCode = rs.getString(ProductFieldNames.LOOKUP_CODE);
 		this.count = rs.getInt(ProductFieldNames.COUNT);
+		this.price = rs.getDouble(ProductFieldNames.PRICE);
 		this.createdOn = rs.getTimestamp(ProductFieldNames.CREATED_ON).toLocalDateTime();
 	}
 
@@ -26,6 +27,7 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 	protected Map<String, Object> fillRecord(Map<String, Object> record) {
 		record.put(ProductFieldNames.LOOKUP_CODE, this.lookupCode);
 		record.put(ProductFieldNames.COUNT, this.count);
+		record.put(ProductFieldNames.PRICE, this.price);
 		record.put(ProductFieldNames.CREATED_ON, Timestamp.valueOf(this.createdOn));
 		
 		return record;
@@ -56,6 +58,13 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		
 		return this;
 	}
+	private double price;
+	public double getPrice() {
+		return this.price;
+	}
+	public ProductEntity setPrice(double price) {
+		this.price = price;
+	}
 
 	private LocalDateTime createdOn;
 	public LocalDateTime getCreatedOn() {
@@ -76,6 +85,7 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		
 		this.count = -1;
 		this.lookupCode = StringUtils.EMPTY;
+		this.price = -1.0;
 		this.createdOn = LocalDateTime.now();
 	}
 	
@@ -84,6 +94,7 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		
 		this.count = -1;
 		this.lookupCode = StringUtils.EMPTY;
+		this.price = -1.0;
 		this.createdOn = LocalDateTime.now();
 	}
 
@@ -92,7 +103,7 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
-
+		this.price = apiProduct.getPrice;
 		this.createdOn = LocalDateTime.now();
 	}
 }

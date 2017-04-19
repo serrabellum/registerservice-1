@@ -64,6 +64,8 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 	}
 	public ProductEntity setPrice(double price) {
 		this.price = price;
+		this.propertyChanged(ProductFieldNames.PRICE);
+		return this;
 	}
 
 	private LocalDateTime createdOn;
@@ -103,7 +105,7 @@ public class ProductEntity extends BaseEntity<ProductEntity> {
 		
 		this.count = apiProduct.getCount();
 		this.lookupCode = apiProduct.getLookupCode();
-		this.price = apiProduct.getPrice;
+		this.price = apiProduct.getPrice();
 		this.createdOn = LocalDateTime.now();
 	}
 }

@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import edu.uark.commands.products.CreateTransactionCommand;
 import edu.uark.commands.products.ProductByLookupCodeQuery;
 import edu.uark.commands.products.ProductQuery;
 import edu.uark.commands.products.ProductSaveCommand;
 import edu.uark.commands.products.ProductsQuery;
 import edu.uark.models.api.Product;
 import edu.uark.models.api.ProductListing;
+import edu.uark.models.api.Transaction;
 
 @RestController
 @RequestMapping(value = "/product")
@@ -44,7 +46,14 @@ public class ProductRestController {
 			setApiProduct(product).
 			execute();
 	}
-
+	
+	@RequestMapping(value = "/apiv0/createTransaction/", method = RequestMethod.PUT)
+	public Transaction createTransaction(@RequestBody Transaction transaction)
+	{
+		return (new CreateTransactionCommand()).setApiTransaction(transaction).execute();
+				
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public String test() {

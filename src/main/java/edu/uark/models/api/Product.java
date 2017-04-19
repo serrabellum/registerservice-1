@@ -31,6 +31,18 @@ public class Product {
 	public int getCount() {
 		return this.count;
 	}
+	
+	private int price;
+	public int getPrice()
+	{
+		return this.price;
+	}
+	
+	public Product setPriace(int price)
+	{
+		this.price = price;
+		return this;
+	}
 	public Product setCount(int count) {
 		this.count = count;
 		return this;
@@ -44,6 +56,7 @@ public class Product {
 		this.createdOn = createdOn;
 		return this;
 	}
+	
 	
 	private ProductApiRequestStatus apiRequestStatus;
 	public ProductApiRequestStatus getApiRequestStatus() {

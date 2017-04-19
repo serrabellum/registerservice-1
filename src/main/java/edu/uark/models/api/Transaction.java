@@ -57,6 +57,10 @@ public class Transaction {
 		}
 	}
 	
+	public UUID getTransactionID(){
+		return transactionID;
+	}
+	
 	private void setDate(String date) {
 		this.date = date;
 	}

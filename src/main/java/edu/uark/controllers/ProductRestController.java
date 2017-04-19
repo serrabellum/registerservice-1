@@ -2,6 +2,7 @@ package edu.uark.controllers;
 
 import java.util.UUID;
 
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,9 +49,12 @@ public class ProductRestController {
 	}
 	
 	@RequestMapping(value = "/apiv0/createTransaction/", method = RequestMethod.PUT)
-	public Transaction createTransaction(@RequestBody Transaction transaction)
+	public Transaction createTransaction(@RequestBody String transactionJSON)
 	{
-		return (new CreateTransactionCommand()).setApiTransaction(transaction).execute();
+		return (new CreateTransactionCommand()).
+				setApiTransaction(
+						new Transaction(
+								new JSONObject(transactionJSON))).execute();
 				
 	}
 	

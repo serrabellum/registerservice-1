@@ -25,7 +25,7 @@ public class Transaction {
 	private String date; //added
 	private String employeeID; //added
 	private  Transactiontype transactionType;
-	
+	private UUID id;
 	
 	public Transaction(JSONObject values) throws JSONException
 	{
@@ -75,6 +75,10 @@ public class Transaction {
 	
 	private void setTransactionID(UUID transactionID){
 		this.transactionID = transactionID;
+	}
+	public UUID getId()
+	{
+		return this.id;
 	}
 	
 }

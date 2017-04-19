@@ -25,6 +25,7 @@ public class TransactionRepository extends BaseRepository<TransactionEntity> imp
 	}
 	protected void insert(TransactionEntity entity)
 	{
+		
 	}
 	protected void insert(Collection<TransactionEntity> entityCollection)
 	{

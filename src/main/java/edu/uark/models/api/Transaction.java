@@ -21,7 +21,7 @@ public class Transaction {
 	
 	private Map <String, Double> ProductsSold; //added
 	private UUID transactionID; //added
-	private float totalCost; //added
+	private Double totalCost; //added
 	private String date; //added
 	private String employeeID; //added
 	private  Transactiontype transactionType;
@@ -34,7 +34,7 @@ public class Transaction {
 		setEmployeeID(values.getString("employeeID"));
 		setTransactionID(UUID.fromString(values.getString("transactionID")));
 		setMap(values.getJSONArray("transaction"));
-		setTotalCost();
+		setTotalCost(values.getString("totalCost"));
 		
 	}
 	
@@ -61,12 +61,8 @@ public class Transaction {
 		this.date = date;
 	}
 	
-	private void setTotalCost(){
-		float sum = 0;
-		for(String key: ProductsSold.keySet()){
-			sum += ProductsSold.get(key);
-		}
-		this.totalCost = sum;
+	private void setTotalCost(String totalCost){
+		this.totalCost = Double.parseDouble(totalCost);
 	}
 	
 	private void setEmployeeID(String employeeID){

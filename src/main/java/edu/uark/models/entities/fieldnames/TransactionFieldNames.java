@@ -1,6 +1,11 @@
 package edu.uark.models.entities.fieldnames;
 
-public class TransactionFieldNames {
+import edu.uark.dataaccess.entities.BaseFieldNames;
+
+public class TransactionFieldNames extends BaseFieldNames{
+	
+	public static final String RETURN = "return";
+	public static final String SALE = "sale";
 	public static final String TRANSACTION_ID = "transactionid";
 	public static final String EMPLOYEE_ID = "employeeid";
 	public static final String DATE = "date";

@@ -13,7 +13,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import edu.uark.models.api.enums.TransactionApiRequestStatus;
-
+import edu.uark.models.entities.fieldnames.TransactionFieldNames;
 
 
 public class Transaction {
@@ -26,7 +26,7 @@ public class Transaction {
 	private Double totalCost; //added
 	private String date; //added
 	private String employeeID; //added
-	private  TransactionType transactionType;
+	private  String transactionType;
 	
 	public Transaction(JSONObject values) throws JSONException
 	{
@@ -59,10 +59,10 @@ public class Transaction {
 	}
 	
 	private void setTransactionType(String transaction){
-		if(transaction.equals("Return")){
-			this.transactionType = Transactiontype.RETURN;
+		if(transaction.equals("return")){
+			this.transactionType = TransactionFieldNames.RETURN;
 		} else {
-			this.transactionType = Transactiontype.SALE;
+			this.transactionType = TransactionFieldNames.SALE;
 		}
 	}
 	

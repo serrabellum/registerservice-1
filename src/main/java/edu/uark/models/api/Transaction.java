@@ -17,7 +17,7 @@ import edu.uark.models.api.enums.TransactionApiRequestStatus;
 
 
 public class Transaction {
-	public enum Transactiontype{
+	public enum TransactionType{
 		RETURN,SALE;
 	}
 	
@@ -26,7 +26,7 @@ public class Transaction {
 	private Double totalCost; //added
 	private String date; //added
 	private String employeeID; //added
-	private  Transactiontype transactionType;
+	private  TransactionType transactionType;
 	
 	public Transaction(JSONObject values) throws JSONException
 	{
@@ -38,7 +38,15 @@ public class Transaction {
 		setTotalCost(values.getString("totalCost"));
 		
 	}
-	
+	public Transaction()
+	{
+		transactionType = null;
+		transactionID = null;
+		totalCost = 0.0;
+		date = "";
+		employeeID = "";
+		ProductsSold = new HashMap<String, Double>();
+	}
 	private void setMap(JSONArray ProductData){
 		String product;
 		double amount;
@@ -60,6 +68,22 @@ public class Transaction {
 	
 	public UUID getTransactionID(){
 		return transactionID;
+	}
+	public double getTotalCost()
+	{
+		return this.totalCost;
+	}
+	public String getEmployeeId()
+	{
+		return this.employeeID;
+	}
+	public String getDate()
+	{
+		return this.date;
+	}
+	public String getTransactionType()
+	{
+		return this.transactionType;
 	}
 	
 	private void setDate(String date) {

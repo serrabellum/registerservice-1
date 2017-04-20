@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 import edu.uark.models.api.Transaction;
 import edu.uark.models.api.enums.TransactionApiRequestStatus;
+import edu.uark.models.entities.TransactionEntity;
 import edu.uark.models.repositories.TransactionRepository;
 import edu.uark.models.repositories.interfaces.TransactionRepositoryInterface;
 
@@ -18,6 +19,11 @@ public class CreateTransactionCommand {
 		if(apiTransaction.isBlank())
 		{
 			return (new Transaction().setApiRequestStatus(TransactionApiRequestStatus.INVALID_INPUT));
+		}
+		TransactionEntity transactionEntity = this.transactionRepository.get(this.apiTransaction.getId());
+		if(transactionEntity != null)
+		{
+			this.apiTransaction = transactionEntity.synchronize(this.apiTransaction);
 		}
 	}
 	private Transaction apiTransaction;

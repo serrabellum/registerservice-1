@@ -12,6 +12,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import edu.uark.models.api.enums.TransactionApiRequestStatus;
+
 
 
 public class Transaction {
@@ -25,7 +27,6 @@ public class Transaction {
 	private String date; //added
 	private String employeeID; //added
 	private  Transactiontype transactionType;
-	private UUID id;
 	
 	public Transaction(JSONObject values) throws JSONException
 	{
@@ -78,7 +79,17 @@ public class Transaction {
 	}
 	public UUID getId()
 	{
-		return this.id;
+		return this.transactionID;
+	}
+	public Boolean isBlank()
+	{
+		return (employeeID.isEmpty() || transactionType == null || date.isEmpty() || totalCost == 0.0 || ProductsSold.isEmpty());
+		
+	}
+
+	public Transaction setApiRequestStatus(TransactionApiRequestStatus invalidInput) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

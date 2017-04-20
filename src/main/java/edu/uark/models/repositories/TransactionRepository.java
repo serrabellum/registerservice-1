@@ -1,8 +1,6 @@
 package edu.uark.models.repositories;
 
 import java.util.Collection;
-import java.util.LinkedList;
-
 import edu.uark.dataaccess.repository.BaseRepository;
 import edu.uark.dataaccess.repository.DatabaseTable;
 import edu.uark.models.entities.TransactionEntity;
